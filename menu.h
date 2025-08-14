@@ -15,6 +15,7 @@ public:
 	void render();
 	void init();
 	void render();
+ void createDebugConsole(); // TODO: rename?
 	BOOL __stdcall newSwapBuffers(HDC hdc); 
 private:
 
