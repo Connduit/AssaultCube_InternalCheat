@@ -8,12 +8,7 @@
 
 namespace Menu
 {
-	void toggleMenu();
-	void init();
-	void startRender();
-	void render();
-	void endRender();
-	BOOL __stdcall newSwapBuffers(HDC hdc); // 
+
 }
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam); // TODO: shouldn't be extern in cpp file? move to .h file
@@ -25,5 +20,10 @@ public:
 	void toggleMenu();
 	void render();
 	void init();
+	void startRender(); // TODO: move into render
+	void render();
+	void endRender(); // TODO: move into render
+	BOOL __stdcall newSwapBuffers(HDC hdc); 
 private:
+
 };
