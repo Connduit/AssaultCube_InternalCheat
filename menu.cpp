@@ -88,23 +88,13 @@ void Menu::init()
 
 }
 
-void Menu::startRender()
+void Menu::render()
 {
-	//std::cout << "inside start render" << std::endl;
+	// start render:
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
-}
-
-void Menu::endRender()
-{
-	//std::cout << "inside end render" << std::endl;
-	ImGui::Render();
-	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
-}
-
-void Menu::render()
-{
+	
 	//std::cout << "inside render" << std::endl;
 	if (GetAsyncKeyState(VK_INSERT) & 1)
 		showMenu = !showMenu;
@@ -131,6 +121,10 @@ void Menu::render()
 		originalSetRelativeMouseMode(!showMenu);
 	}
 
+	// endRender:
+	ImGui::Render();
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+
 }
 
 void setupContext(HDC& hdc)
@@ -150,7 +144,6 @@ void setupContext(HDC& hdc)
 }
 
 
-
 BOOL __stdcall Menu::newSwapBuffers(HDC hdc)
 {
 	//std::cout << "inside new swap buffers" << std::endl;
@@ -167,9 +160,7 @@ BOOL __stdcall Menu::newSwapBuffers(HDC hdc)
 	}
 
 	wglMakeCurrent(hdc, myContext);
-	Menu::startRender();
 	Menu::render();
-	Menu::endRender();
 
 	wglMakeCurrent(hdc, gameContext);
 	return originalSwapBuffers(hdc);
@@ -190,3 +181,4 @@ void Menuu::init()
 {
 
 }
+
