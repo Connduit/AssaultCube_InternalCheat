@@ -13,7 +13,7 @@ public:
     // TODO: void resetPointers(); // see constants.cpp::resetPointers()
 
     // TODO: probably can make these functions inline, right?
-    static uintptr_t setBaseAddress()
+    void setBaseAddress()
     {
         // baseAddress_ = reinterpret_cast<uintptr_t>(GetModuleHandle(L"ac_client.exe"));
         baseAddress_ = reinterpret_cast<uintptr_t>(GetModuleHandle(nullptr)); // passing nullptr just gets handle to current/main process (aka. the process we injected into)
